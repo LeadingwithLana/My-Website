@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Alana Maria Carter-Grimes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --ink: #0d0d0d;
+    --cream: #efe6de;
+    --gold: #8a5a44;
+    --gold-light: #b7846a;
+    --dusty-green: #9b7f70;
+    --warm-white: #fcfaf7;
+    --mid: #5f5550;
+    --dsu-blue: #3d2623;
+    --border: rgba(13,13,13,0.12);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--warm-white);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.35;
+  }
+
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 4rem;
+    background: rgba(250,247,242,0.86);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.08rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--mid);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    padding-top: 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 6rem 4rem 6rem 6rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.4rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.15s forwards;
+  }
+
+  .hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.5rem, 6vw, 6.4rem);
+    font-weight: 300;
+    line-height: 0.98;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.45rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.3s forwards;
+  }
+
+  .hero-name span {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.15rem, 2vw, 1.6rem);
+    font-weight: 300;
+    color: var(--mid);
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.45s forwards;
+  }
+
+  .hero-tagline {
+    font-size: 0.95rem;
+    color: var(--mid);
+    max-width: 520px;
+    line-height: 1.85;
+    margin-bottom: 2.4rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.6s forwards;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.75s forwards;
+  }
+
+  .hero-announcement {
+    margin-top: 2rem;
+    max-width: 560px;
+    border: 1px solid rgba(138,90,68,0.22);
+    background: linear-gradient(180deg, rgba(255,255,255,0.92) 0%, rgba(244,238,232,0.96) 100%);
+    box-shadow: 0 14px 34px rgba(61, 38, 35, 0.08);
+    padding: 1rem 1.15rem;
+    position: relative;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.9s forwards;
+  }
+
+  .hero-announcement-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.45rem;
+  }
+
+  .hero-announcement-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.28rem;
+    line-height: 1.2;
+    color: var(--ink);
+    margin-bottom: 0.28rem;
+  }
+
+  .hero-announcement-text {
+    font-size: 0.84rem;
+    line-height: 1.75;
+    color: var(--mid);
+  }
+
+
+  .btn-primary, .btn-outline {
+    display: inline-block;
+    padding: 0.9rem 1.9rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .btn-primary {
+    background: var(--ink);
+    color: var(--warm-white);
+  }
+
+  .btn-primary:hover {
+    background: var(--gold);
+    transform: translateY(-2px);
+  }
+
+  .btn-outline {
+    border: 1px solid var(--ink);
+    color: var(--ink);
+  }
+
+  .btn-outline:hover {
+    background: var(--ink);
+    color: var(--warm-white);
+    transform: translateY(-2px);
+  }
+
+  .hero-right {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .hero-visual {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top right, rgba(255,255,255,0.08), transparent 24%), linear-gradient(135deg, #2f1d1a 0%, #5a3a34 45%, #9b7f70 100%);
+    opacity: 0;
+    animation: fadeIn 1.2s ease 0.25s forwards;
+  }
+
+  .hero-visual::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  .hero-dsu-badge {
+    position: absolute;
+    top: 4rem;
+    right: 3rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.92rem;
+    font-style: italic;
+    color: rgba(255,255,255,0.55);
+    text-align: right;
+    letter-spacing: 0.05em;
+    opacity: 0;
+    animation: fadeIn 1s ease 0.7s forwards;
+  }
+
+  .hero-stat-block {
+    position: absolute;
+    bottom: 3rem;
+    left: 3rem;
+    right: 3rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(255,255,255,0.15);
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.95s forwards;
+  }
+
+  .hero-stat {
+    background: rgba(0,0,0,0.32);
+    backdrop-filter: blur(8px);
+    padding: 1.5rem;
+    text-align: center;
+  }
+
+  .hero-stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem;
+    font-weight: 300;
+    color: var(--gold-light);
+    line-height: 1;
+    display: block;
+  }
+
+  .hero-stat-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.64);
+    display: block;
+    margin-top: 0.3rem;
+  }
+
+  section { position: relative; }
+  .section-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 7rem 4rem;
+  }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 30px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .section-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 4vw, 3.8rem);
+    font-weight: 300;
+    line-height: 1.1;
+    margin-bottom: 2rem;
+  }
+
+  .section-heading em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  #about {
+    background: linear-gradient(180deg, #f2e9e1 0%, var(--cream) 100%);
+    border-top: 1px solid var(--border);
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.35fr;
+    gap: 6rem;
+    align-items: start;
+  }
+
+  .about-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.55rem;
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1.5;
+    color: var(--dusty-green);
+    border-left: 2px solid var(--gold);
+    padding-left: 1.5rem;
+    margin: 2rem 0 3rem;
+  }
+
+  .about-body {
+    font-size: 0.95rem;
+    color: var(--mid);
+    line-height: 1.9;
+  }
+
+  .about-body p + p { margin-top: 1.2rem; }
+
+  .concentrations {
+    display: grid;
+    gap: 1.4rem;
+    margin-top: 2rem;
+  }
+
+  .concentration-card {
+    border: 1px solid var(--border);
+    padding: 2rem;
+    background: var(--warm-white);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.25s, box-shadow 0.25s;
+    box-shadow: 0 10px 28px rgba(52, 30, 24, 0.04);
+  }
+
+  .concentration-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--gold);
+  }
+
+  .concentration-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 44px rgba(44,24,18,0.10);
+  }
+
+  .conc-icon {
+    width: 46px;
+    height: 46px;
+    margin-bottom: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    color: var(--gold);
+    background: rgba(184,146,42,0.06);
+  }
+
+  .conc-icon svg {
+    width: 21px;
+    height: 21px;
+    stroke: currentColor;
+  }
+
+  .conc-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+    color: var(--ink);
+  }
+
+  .conc-desc {
+    font-size: 0.85rem;
+    color: var(--mid);
+    line-height: 1.75;
+  }
+
+  #experience { background: linear-gradient(180deg, var(--warm-white) 0%, #f7f1eb 100%); }
+
+  .exp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: var(--border);
+    margin-top: 3rem;
+    border: 1px solid var(--border);
+  }
+
+  .exp-card {
+    background: rgba(252,250,247,0.96);
+    padding: 2.5rem;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .exp-card:hover { background: var(--cream); transform: translateY(-2px); }
+
+  .exp-org {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.6rem;
+  }
+
+  .exp-role {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 0.4rem;
+    line-height: 1.2;
+  }
+
+  .exp-meta {
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-bottom: 0.8rem;
+  }
+
+  .exp-desc {
+    font-size: 0.85rem;
+    color: var(--mid);
+    line-height: 1.8;
+    margin-top: 0.4rem;
+  }
+
+  .exp-tag {
+    display: inline-block;
+    background: var(--ink);
+    color: var(--warm-white);
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.7rem;
+    margin-top: 1.2rem;
+  }
+
+  #leadership {
+    background: linear-gradient(180deg, #16110f 0%, #0d0d0d 100%);
+    color: var(--cream);
+  }
+
+  #leadership .section-heading { color: var(--cream); }
+  #leadership .section-label { color: var(--gold-light); }
+  #leadership .section-label::before { background: var(--gold-light); }
+
+  .leadership-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: rgba(255,255,255,0.08);
+    margin-top: 3rem;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .lead-card {
+    background: rgba(13,13,13,0.92);
+    padding: 2.5rem 2rem;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .lead-card:hover { background: #1b1513; transform: translateY(-2px); }
+
+  .lead-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.3rem;
+    font-weight: 300;
+    color: rgba(184,146,42,0.25);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .lead-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--cream);
+    margin-bottom: 0.4rem;
+  }
+
+  .lead-org {
+    font-size: 0.72rem;
+    color: var(--gold-light);
+    letter-spacing: 0.1em;
+    font-family: 'DM Mono', monospace;
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+  }
+
+  .lead-desc {
+    font-size: 0.82rem;
+    color: rgba(245,240,232,0.62);
+    line-height: 1.8;
+  }
+
+  #vision {
+    background: linear-gradient(180deg, #432a26 0%, #2f1d1a 100%);
+    color: var(--cream);
+    overflow: hidden;
+  }
+
+  #vision::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(184,146,42,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  #vision .section-heading { color: var(--cream); }
+  #vision .section-label { color: var(--gold-light); }
+  #vision .section-label::before { background: var(--gold-light); }
+
+  .vision-layout {
+    display: grid;
+    grid-template-columns: 1.25fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .vision-body {
+    font-size: 1.02rem;
+    color: rgba(245,240,232,0.78);
+    line-height: 1.9;
+  }
+
+  .vision-body p + p { margin-top: 1.2rem; }
+
+  .vision-pillars {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .pillar {
+    border: 1px solid rgba(255,255,255,0.12);
+    padding: 1.5rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .pillar:hover {
+    border-color: var(--gold);
+    background: rgba(184,146,42,0.08);
+  }
+
+  .pillar-icon {
+    width: 44px;
+    height: 44px;
+    border: 1px solid rgba(255,255,255,0.16);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--gold-light);
+    background: rgba(255,255,255,0.04);
+  }
+
+  .pillar-icon svg {
+    width: 20px;
+    height: 20px;
+    stroke: currentColor;
+  }
+
+  .pillar-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    color: var(--cream);
+    font-weight: 400;
+  }
+
+  .pillar-sub {
+    font-size: 0.78rem;
+    color: rgba(245,240,232,0.56);
+    margin-top: 0.15rem;
+  }
+
+  #contact {
+    background: var(--warm-white);
+    border-top: 1px solid var(--border);
+  }
+
+  .contact-inner {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 7rem 4rem;
+    text-align: center;
+  }
+
+  .contact-inner .section-label {
+    justify-content: center;
+  }
+
+  .contact-inner .section-label::before { display: none; }
+
+  .contact-body {
+    font-size: 0.95rem;
+    color: var(--mid);
+    line-height: 1.9;
+    max-width: 560px;
+    margin: 1.5rem auto 3rem;
+  }
+
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    padding: 0.9rem 1.5rem;
+    border: 1px solid var(--border);
+    transition: all 0.2s;
+  }
+
+  .contact-link:hover {
+    background: var(--ink);
+    color: var(--warm-white);
+    border-color: var(--ink);
+  }
+
+  footer {
+    padding: 2rem 4rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.72rem;
+    color: var(--mid);
+    letter-spacing: 0.08em;
+    background: var(--warm-white);
+  }
+
+  .footer-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.12em;
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 6rem 1.5rem 3rem; }
+    .hero-right { height: 310px; }
+    .hero-stat-block { bottom: 1rem; left: 1rem; right: 1rem; }
+    .about-grid, .vision-layout { grid-template-columns: 1fr; gap: 3rem; }
+    .exp-grid, .leadership-list { grid-template-columns: 1fr; }
+    .section-inner, .contact-inner { padding: 4rem 1.5rem; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 2rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#">Alana M. Carter-Grimes</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#leadership">Leadership</a></li>
+    <li><a href="#vision">Vision</a></li>
+    <li><a href="#contact">Connect</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Delaware State University · Management · Business Analytics · MIS/ERP</p>
+    <h1 class="hero-name">Alana<br /><span>Maria</span><br />Carter-Grimes</h1>
+    <p class="hero-title">Student Leader · Analytics-Minded · Future Business Professional</p>
+    <p class="hero-tagline">
+      I am a junior at Delaware State University studying Management with dual concentrations in Business Analytics and MIS/ERP.
+      My work sits at the intersection of strategy, systems, operations, and service.
+    </p>
+    <div class="hero-ctas">
+      <a class="btn-primary" href="#experience">Explore My Journey</a>
+      <a class="btn-outline" href="https://www.linkedin.com/in/alana-maria-carter-grimes/" target="_blank" rel="noreferrer">LinkedIn</a>
+    </div>
+    <div class="hero-announcement">
+      <div class="hero-announcement-label">Upcoming Role</div>
+      <div class="hero-announcement-title">Barclays Management Analyst Intern · Summer 2026</div>
+      <div class="hero-announcement-text">Preparing to join Barclays in Summer 2026 as a Management Analyst Intern, continuing to grow my experience in business operations, strategy, and professional leadership.</div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-visual"></div>
+    <div class="hero-dsu-badge">
+      Delaware State University<br />
+      Dover, Delaware<br />
+      <em>Class of 2027</em>
+    </div>
+    <div class="hero-stat-block">
+      <div class="hero-stat">
+        <span class="hero-stat-num">2</span>
+        <span class="hero-stat-label">Concentrations</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">3.68</span>
+        <span class="hero-stat-label">GPA</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">2027</span>
+        <span class="hero-stat-label">Graduation</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-left reveal">
+        <p class="section-label">Who I Am</p>
+        <h2 class="section-heading">Analytically<br/>grounded. <em>People</em><br/>centered.</h2>
+        <blockquote class="about-quote">
+          “I am building a foundation in business, data, and enterprise systems that can create real impact.”
+        </blockquote>
+        <div class="about-body">
+          <p>Hello, I’m Alana Maria Carter-Grimes, a junior at Delaware State University pursuing a Bachelor of Science in Management with concentrations in Business Analytics and MIS/ERP.</p>
+          <p>I am especially interested in how organizations use data, systems, and process improvement to make better decisions and operate more effectively. My academic path reflects the kind of professional I am becoming: thoughtful, adaptable, and committed to meaningful results.</p>
+          <p>Whether I am supporting student engagement, working in supply chain operations, or serving in the community, I care about doing work that is organized, collaborative, and purpose-driven.</p>
+        </div>
+      </div>
+      <div class="about-right reveal">
+        <p class="section-label">What I Study</p>
+        <h3 class="section-heading" style="font-size:2rem;">A business foundation<br /><em>with systems insight.</em></h3>
+        <div class="concentrations">
+          <div class="concentration-card">
+            <span class="conc-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 20V10"></path>
+        <path d="M10 20V4"></path>
+        <path d="M16 20v-7"></path>
+        <path d="M22 20v-11"></path>
+      </svg>
+    </span>
+            <div class="conc-title">Business Analytics</div>
+            <div class="conc-desc">I am developing the ability to use data analysis, reporting, and visualization to support business decisions. My coursework and tools include predictive analytics, SQL, Tableau, Power BI, Excel, and introductory Python.</div>
+          </div>
+          <div class="concentration-card">
+            <span class="conc-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="3"></circle>
+        <path d="M19.4 15a1.7 1.7 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06A1.7 1.7 0 0 0 15 19.4a1.7 1.7 0 0 0-1 .16 1.7 1.7 0 0 0-.9 1.5V21a2 2 0 1 1-4 0v-.09a1.7 1.7 0 0 0-.9-1.5A1.7 1.7 0 0 0 7 19.4a1.7 1.7 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.7 1.7 0 0 0 4.6 15a1.7 1.7 0 0 0-.16-1 1.7 1.7 0 0 0-1.5-.9H3a2 2 0 1 1 0-4h.09a1.7 1.7 0 0 0 1.5-.9A1.7 1.7 0 0 0 4.6 7a1.7 1.7 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.7 1.7 0 0 0 9 4.6a1.7 1.7 0 0 0 1-.16 1.7 1.7 0 0 0 .9-1.5V3a2 2 0 1 1 4 0v.09a1.7 1.7 0 0 0 .9 1.5A1.7 1.7 0 0 0 17 4.6a1.7 1.7 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.7 1.7 0 0 0 19.4 9c0 .35.05.69.16 1 .29.55.85.9 1.46.9H21a2 2 0 1 1 0 4h-.09c-.61 0-1.17.35-1.46.9-.11.31-.16.65-.16 1Z"></path>
+      </svg>
+    </span>
+            <div class="conc-title">MIS / ERP</div>
+            <div class="conc-desc">I am learning how enterprise systems support operations, decision-making, and organizational performance. This concentration reflects my interest in technology-enabled business strategy and process improvement.</div>
+          </div>
+          <div class="concentration-card">
+            <span class="conc-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 8l9-4 9 4-9 4-9-4Z"></path>
+        <path d="M7 10.5V15c0 1.5 2.2 3 5 3s5-1.5 5-3v-4.5"></path>
+      </svg>
+    </span>
+            <div class="conc-title">Delaware State University</div>
+            <div class="conc-desc">At DSU, I am building a strong academic and leadership foundation while preparing for a career in analytics, operations, and business systems.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="section-inner">
+    <div class="reveal">
+      <p class="section-label">Experience</p>
+      <h2 class="section-heading">Where learning<br />meets <em>real work.</em></h2>
+    </div>
+    <div class="exp-grid reveal">
+      <div class="exp-card">
+        <div class="exp-org">ASU + GSV Summit</div>
+        <div class="exp-role">Student Engagement & Program Ops Extern</div>
+        <div class="exp-meta">Spring 2026 – Present · Remote, Delaware</div>
+        <div class="exp-desc">Serve as a founding member of the ASU+GSV HBCU Partnership Advisory Board. Support student engagement strategy for a multi-institution HBCU cohort, manage communication rhythms, and lead on-site cohort connection and reflection during the Summit.</div>
+        <span class="exp-tag">Program Strategy</span>
+      </div>
+      <div class="exp-card">
+        <div class="exp-org">AstraZeneca</div>
+        <div class="exp-role">Supply Chain Intern</div>
+        <div class="exp-meta">Summer 2025 · Newark, Delaware</div>
+        <div class="exp-desc">Supported supply chain operations across receiving and distribution warehouses. Used SAP and Power BI to track warehouse performance metrics and configured SharePoint site functionality to reduce search time and improve user experience.</div>
+        <span class="exp-tag">Supply Chain</span>
+      </div>
+      <div class="exp-card">
+        <div class="exp-org">Plenty Pantry · REACH Riverside</div>
+        <div class="exp-role">Volunteer</div>
+        <div class="exp-meta">Summer 2025 – Present · Wilmington, Delaware</div>
+        <div class="exp-desc">Support pantry operations serving community families, train and onboard new volunteers, and coordinated a four-week food and essentials drive at Delaware State University that collected 103 items.</div>
+        <span class="exp-tag">Community Impact</span>
+      </div>
+      <div class="exp-card">
+        <div class="exp-org">Delaware State University</div>
+        <div class="exp-role">Academic Foundation</div>
+        <div class="exp-meta">B.S. in Management · Expected May 2027</div>
+        <div class="exp-desc">Coursework includes Management Information Systems, Programming for Analytics, and Predictive Analytics. I am building skills in data analysis, KPI development, process improvement, and operational excellence.</div>
+        <span class="exp-tag">Analytics</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="leadership">
+  <div class="section-inner">
+    <div class="reveal">
+      <p class="section-label">Leadership & Involvement</p>
+      <h2 class="section-heading">Leading with<br /><em>service</em> and presence.</h2>
+    </div>
+    <div class="leadership-list reveal">
+      <div class="lead-card">
+        <div class="lead-num">01</div>
+        <div class="lead-title">Miss College of Business</div>
+        <div class="lead-org">2025 – 2026</div>
+        <div class="lead-desc">Serving as a visible student leader representing excellence, confidence, and impact within the College of Business.</div>
+      </div>
+      <div class="lead-card">
+        <div class="lead-num">02</div>
+        <div class="lead-title">President</div>
+        <div class="lead-org">STOMPP / Predictive Analytics</div>
+        <div class="lead-desc">Helping cultivate student interest in analytics and data-informed thinking through leadership and campus engagement.</div>
+      </div>
+      <div class="lead-card">
+        <div class="lead-num">03</div>
+        <div class="lead-title">Vice President</div>
+        <div class="lead-org">Hornets on Stage</div>
+        <div class="lead-desc">Supporting student programming, creative collaboration, and organizational leadership in the performing arts community.</div>
+      </div>
+      <div class="lead-card">
+        <div class="lead-num">04</div>
+        <div class="lead-title">Membership Outreach Chair</div>
+        <div class="lead-org">NSLS</div>
+        <div class="lead-desc">Contributing to member engagement and outreach while supporting leadership development across campus.</div>
+      </div>
+      <div class="lead-card">
+        <div class="lead-num">05</div>
+        <div class="lead-title">Programs & Research Chair</div>
+        <div class="lead-org">NAACP</div>
+        <div class="lead-desc">Supporting chapter initiatives, thoughtful programming, and research-centered contributions to student advocacy work.</div>
+      </div>
+      <div class="lead-card">
+        <div class="lead-num">06</div>
+        <div class="lead-title">University Choir</div>
+        <div class="lead-org">Student Involvement</div>
+        <div class="lead-desc">Staying connected to creativity, discipline, and community through campus arts involvement alongside academic and professional growth.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="vision">
+  <div class="section-inner">
+    <div class="vision-layout reveal">
+      <div>
+        <p class="section-label">Where I’m Headed</p>
+        <h2 class="section-heading">Preparing for a future in <em>business</em>, systems, and thoughtful impact.</h2>
+        <div class="vision-body">
+          <p>I am building toward a career where business knowledge, analytics, and technology come together in practical ways. I am especially interested in roles that involve operations, enterprise systems, process improvement, and data-informed decision-making.</p>
+          <p>My experiences so far have strengthened my interest in supply chain, student engagement strategy, and organizational effectiveness. Over time, I want to continue growing into opportunities where I can solve problems, lead well, and contribute to strong teams and systems.</p>
+          <p>I care about becoming a professional who is both capable and grounded, someone who can create results while still leading with service, clarity, and intention.</p>
+        </div>
+      </div>
+      <div class="vision-pillars">
+        <div class="pillar">
+          <span class="pillar-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 17l6-6 4 4 7-8"></path>
+        <path d="M14 7h6v6"></path>
+      </svg></span>
+          <div>
+            <div class="pillar-title">Analytics</div>
+            <div class="pillar-sub">Power BI · Tableau · SQL · Excel · Introductory Python</div>
+          </div>
+        </div>
+        <div class="pillar">
+          <span class="pillar-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M10 13a5 5 0 0 1 0-7l1.5-1.5a5 5 0 0 1 7 7L17 13"></path>
+        <path d="M14 11a5 5 0 0 1 0 7L12.5 19.5a5 5 0 0 1-7-7L7 11"></path>
+      </svg></span>
+          <div>
+            <div class="pillar-title">Operations & Supply Chain</div>
+            <div class="pillar-sub">KPIs · Process Improvement · Operational Excellence</div>
+          </div>
+        </div>
+        <div class="pillar">
+          <span class="pillar-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="3"></circle>
+        <path d="M19.4 15a1.7 1.7 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06A1.7 1.7 0 0 0 15 19.4a1.7 1.7 0 0 0-1 .16 1.7 1.7 0 0 0-.9 1.5V21a2 2 0 1 1-4 0v-.09a1.7 1.7 0 0 0-.9-1.5A1.7 1.7 0 0 0 7 19.4a1.7 1.7 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.7 1.7 0 0 0 4.6 15a1.7 1.7 0 0 0-.16-1 1.7 1.7 0 0 0-1.5-.9H3a2 2 0 1 1 0-4h.09a1.7 1.7 0 0 0 1.5-.9A1.7 1.7 0 0 0 4.6 7a1.7 1.7 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.7 1.7 0 0 0 9 4.6a1.7 1.7 0 0 0 1-.16 1.7 1.7 0 0 0 .9-1.5V3a2 2 0 1 1 4 0v.09a1.7 1.7 0 0 0 .9 1.5A1.7 1.7 0 0 0 17 4.6a1.7 1.7 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.7 1.7 0 0 0 19.4 9c0 .35.05.69.16 1 .29.55.85.9 1.46.9H21a2 2 0 1 1 0 4h-.09c-.61 0-1.17.35-1.46.9-.11.31-.16.65-.16 1Z"></path>
+      </svg></span>
+          <div>
+            <div class="pillar-title">Enterprise Systems</div>
+            <div class="pillar-sub">MIS · ERP · SAP · Business Systems</div>
+          </div>
+        </div>
+        <div class="pillar">
+          <span class="pillar-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M8 12l2.5 2.5a2.1 2.1 0 0 0 3 0L16 12"></path>
+        <path d="M4 10l3-3a2.8 2.8 0 0 1 4 0l1 1"></path>
+        <path d="M20 10l-3-3a2.8 2.8 0 0 0-4 0l-1 1"></path>
+        <path d="M4 10v5a2 2 0 0 0 2 2h2"></path>
+        <path d="M20 10v5a2 2 0 0 1-2 2h-2"></path>
+      </svg></span>
+          <div>
+            <div class="pillar-title">Leadership</div>
+            <div class="pillar-sub">Student Engagement · Team Leadership · Service</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="contact-inner">
+    <p class="section-label">Let’s Connect</p>
+    <h2 class="section-heading" style="font-size:2.8rem;">Open to meaningful <em>connections</em>.</h2>
+    <p class="contact-body">I am interested in opportunities that help me grow in analytics, operations, enterprise systems, and leadership. Feel free to connect with me on LinkedIn or reach out by email.</p>
+    <div class="contact-links">
+      <a class="contact-link" href="https://www.linkedin.com/in/alana-maria-carter-grimes/" target="_blank" rel="noreferrer">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        LinkedIn
+      </a>
+      <a class="contact-link" href="mailto:aacartergrimes23@students.desu.edu">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Email
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-name">Alana Maria Carter-Grimes</span>
+  <span>Delaware State University · Class of 2027</span>
+  <span>Management · Business Analytics · MIS/ERP</span>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 70);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(r => observer.observe(r));
+</script>
+</body>
+</html>
